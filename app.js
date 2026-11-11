@@ -130,9 +130,9 @@ async function speakTest(btn, target, out){
 
 /* ---------- util ---------- */
 const chipWords = t => clean(t).replace(/[.,!?¿¡;:„“"]/g,'').split(' ').filter(Boolean);
-const MASCOT = `<img class="mascot-img" src="img/mascota.jpg" alt="Chame">`;
+const MASCOT = `<img class="mascot-img" src="mascota.jpg" alt="Chame">`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const img = f => 'img/'+IMG[f.tema]+'.jpg';
+const img = f => ''+IMG[f.tema]+'.jpg';
 const shuffle = a => { a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 const ICON = {
   play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 10v4h4l5 5V5L7 10zm13.5 2A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>',
@@ -207,7 +207,7 @@ function showCard(){
   $('#studyCount').textContent = queue.length;
   if (!queue.length){ const l=nextLearning(); if(l){ queue.push(l); } }
   if (!queue.length){
-    $('#studyBox').innerHTML = `<img class="hero-mascot" src="img/mascota_full.jpg" alt=""><div class="card amber" style="text-align:center;padding:34px 20px">
+    $('#studyBox').innerHTML = `<img class="hero-mascot" src="mascota_full.jpg" alt=""><div class="card amber" style="text-align:center;padding:34px 20px">
       <div class="big">¡Listo por hoy! 🎉</div><p>Repasaste ${qDone} tarjetas. Vuelve mañana para mantener tu racha.</p></div>
       <button class="wide dark" style="margin-top:14px" id="moreNew">Aprender 5 frases más</button>
       <button class="wide" style="margin-top:10px" data-go="practice">Ir a practicar</button>`;
@@ -282,7 +282,7 @@ function showEx(){
   $('#pracCount').innerHTML = `<span class="combo">⚡ ${P.combo}</span>`;
   if (P.i >= P.items.length){
     const pct = Math.round(P.ok/P.total*100);
-    $('#pracBox').innerHTML = `<img class="hero-mascot" src="img/mascota_full.jpg" alt=""><div class="card amber" style="text-align:center;padding:34px 20px">
+    $('#pracBox').innerHTML = `<img class="hero-mascot" src="mascota_full.jpg" alt=""><div class="card amber" style="text-align:center;padding:34px 20px">
       <div class="small" style="font-weight:700">RESULTADO</div><div class="big" style="font-size:56px">${pct}%</div>
       <p>${P.ok} de ${P.total} correctas a la primera. ${pct>=80?'¡Excelente trabajo!':'Repite la práctica para mejorar.'}</p></div>
       <button class="wide" style="margin-top:14px" id="again">Practicar otra vez</button>
@@ -386,7 +386,7 @@ function feedback(ok, f, score){
 
 /* ---------- llamadas (conversación) ---------- */
 const PHONE = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>';
-const callImg = c => 'img/'+c.img+'.jpg';
+const callImg = c => ''+c.img+'.jpg';
 function callSeen(c){ return c.need.filter(id=>S.cards[id]).length; }
 function callOpen(c){ return callSeen(c) >= Math.ceil(c.need.length*0.5); }
 function renderCalls(){
